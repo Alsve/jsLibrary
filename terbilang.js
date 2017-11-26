@@ -48,16 +48,6 @@
     // Dibedakan supaya tidak berat perulangannya
     _Terbilang._replaceWith = {"satu ribu"         : "seribu"};
     
-    // Menghitung jumlah berapa seribu
-    _Terbilang.jumlah_perseribu = function(input) {
-      var count;
-      
-      for (count = 0; input > 1000; count++)
-        input /= 1000;
-      
-      return count;
-    }
-    
     // Mengembalikan string seribu dalam B. Indonesia
     _Terbilang.seribu = function(input) {
       if (input > 999 || isNaN(input)) return "";
@@ -122,20 +112,13 @@
       
       // Deklarasi variable
       var strret = "", i, seribuArr = [], ret = [];
-      var jmlPerseribu = this.jumlah_perseribu(this.floorNumber);
       
       // Memecah integer menjadi array perseribu terbalik
       // input => 123000 => [0, 123]
       // input => 123321 => [321, 123]
-      for (i = 0; i < jmlPerseribu + 1; i++) {
-        if (input !== 1000)
-          seribuArr.push(input % 1000);
-        else {
-          seribuArr.push(0);
-          seribuArr.push(1);
-        }
-        input = Math.floor(input / 1000);
-      }
+      seribuArr = (input).toLocaleString('en')
+                         .split(',')
+                         .reverse();
       
       // Membuat string dari seribuArr
       for (i = seribuArr.length; i > 0;) {
