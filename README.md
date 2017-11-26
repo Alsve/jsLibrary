@@ -16,3 +16,4 @@ Terbilang.seribu(int) // <fn, string> to produce Integer one thousand less to hu
 Terbilang.koma(float) // <fn, string> to produce human readable decimal string.
 Terbilang.PRESISI_DESIMAL // <fn, integer> (default to 2) to set Decimal precision.
 ```
+[Try it yourself here.](https://jsbin.com/qovava/2/edit?html,output)
