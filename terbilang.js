@@ -1,3 +1,8 @@
+// Author        : Alrayan
+// Creation date : Nov 27 17,  04:36
+// License       : BSD License v3
+// Repositories  : https://github.com/Alsve/jsLibrary/
+
     // Membuat kelas
     var _Terbilang = {}
     
