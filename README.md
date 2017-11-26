@@ -10,7 +10,7 @@ Purpose of this program is to produce human readable string from float.
 A float of 1000 would produce string "One thousand". But currently, the program were made in only Bahasa. You need to alter some of the parameter like the array of string to your language to suit your need.
 
 #### Usage
-Include the javascript file with tag and insert it wherever you need. The js only need vanila javascript library and only take two global variable name (i.e. _\_Terbilang_ and _Terbilang_).
+Include the javascript file with script tag and insert it wherever you need. The js only need vanila javascript library and only take two global variable name (i.e. _\_Terbilang_ and _Terbilang_).
 
 ```javascript 
 Terbilang.apa(float) // <fn, string> to produce full string
