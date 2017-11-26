@@ -1,7 +1,7 @@
 # jsLibrary
 Repository for javascript collection made by Alsve.
 
-# terbilang.js
+## terbilang.js
 Purpose of this program is to produce human readable string from float.
 
 #### Example :
