@@ -3,7 +3,7 @@
 // License       : BSD License v3
 // Repositories  : https://github.com/Alsve/jsLibrary/
 
-    // Membuat kelas
+   // Membuat kelas
     var _Terbilang = {}
     
     var Terbilang = _Terbilang;
@@ -12,8 +12,12 @@
     _Terbilang.floorNumber = 0;
     _Terbilang.comma = 0.0;
     
+    // DEKLARASI KONSTANTA
+    // Lokalisasi angka
+    _Terbilang.LOCALE = 'id';
     // Format angka belakang koma
     _Terbilang.PRESISI_DESIMAL = 2;
+    
     // Mengembalikan unit satuan khusus methode this.seribu(input)
     _Terbilang.unitSeribu = ["", "puluh", "ratus"];
     // Unit satuan dalam Bahasa Indonesia
@@ -151,4 +155,9 @@
       }
       
       return strret;
+    }
+    
+    _Terbilang.format = function(input) {
+      if (isNaN(input)) return "";
+      return input.toLocaleString(this.LOCALE);
     }
