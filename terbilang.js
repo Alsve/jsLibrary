@@ -9,12 +9,14 @@
     var Terbilang = _Terbilang;
     
     // Deklarasi variable kelas
-    _Terbilang.floorNumber = 0;
     _Terbilang.comma = 0.0;
+    _Terbilang.arr = [];
     
     // DEKLARASI KONSTANTA
-    // Lokalisasi angka
-    _Terbilang.LOCALE = 'id';
+    // Pemisah perseribu
+    _Terbilang.delimiter = '.'
+    // Pemisah desimal
+    _Terbilang.decimalDelimiter = ','
     // Format angka belakang koma
     _Terbilang.PRESISI_DESIMAL = 2;
     
@@ -104,21 +106,26 @@
     }
     
     // Mengembalikan string dari angka input dalam B.Indonesia
-    _Terbilang.apa = function(input) {
-      this.floorNumber = Math.floor(input);
-      this.comma = input - this.floorNumber;
-      
-      input = this.floorNumber;
-      
+    _Terbilang.apa = function(inp) {
       // Deklarasi variable
-      var strret = "", i, seribuArr = [], ret = [];
+      var strret = "", i, seribuArr = [], ret = [], input;
       
       // Memecah integer menjadi array perseribu terbalik
       // input => 123000 => [0, 123]
       // input => 123321 => [321, 123]
-      seribuArr = (input).toLocaleString('en')
-                         .split(',')
-                         .reverse();
+      inp = inp.replace(',', '.')
+               .split('.');
+      
+      input = inp[0];
+      this.comma = parseFloat("0." + inp[1])
+                     .toPrecision(this.PRESISI_DESIMAL);
+      
+      
+      for (i = input.length - 1; i >= 0; i -= 3)
+        seribuArr.push(input.charAt(i - 2) 
+                     + input.charAt(i - 1)
+                     + input.charAt(i));
+      
       
       // Membuat string dari seribuArr
       for (i = seribuArr.length; i > 0;) {
@@ -140,7 +147,38 @@
       return strret;
     }
     
-    _Terbilang.format = function(input) {
-      if (isNaN(input)) return "";
-      return input.toLocaleString(this.LOCALE);
+    _Terbilang.format = function(inp) {
+      inp = inp.replace(',', '.');
+      if (isNaN(inp)) return "";
+      
+      // Deklarasi variable
+      var strret = "", i, seribuArr = [], ret = [], input;
+      
+      // Memecah integer menjadi array perseribu terbalik
+      // input => 123000 => [0, 123]
+      // input => 123321 => [321, 123]
+      inp = inp.split('.');
+      
+      input = inp[0];
+      this.comma = parseFloat("0." + inp[1])
+                     .toPrecision(this.PRESISI_DESIMAL);
+      
+      
+      for (i = input.length - 1; i >= 0; i -= 3)
+        seribuArr.push(input.charAt(i - 2) 
+                     + input.charAt(i - 1)
+                     + input.charAt(i));
+      
+      seribuArr.reverse();
+      ret.push(seribuArr[0]);
+      
+      for (i = 1; i < seribuArr.length; i++)
+        ret.push(this.delimiter + seribuArr[i]);
+      
+      ret.push(this.decimalDelimiter 
+            + (inp[1] === undefined ? '0' : inp[1]));
+      
+      strret = ret.join('');
+      
+      return strret;
     }
