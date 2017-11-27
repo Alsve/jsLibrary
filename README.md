@@ -6,6 +6,9 @@ LICENSE : BSD License v3
 ## terbilang.js
 Purpose of this program is to produce human readable string from float.
 
+#### Performance
+The performance observed is around O(n).
+
 #### Example :
 A float of 1000 would produce string "One thousand". But currently, the program were made in only Bahasa. You need to alter some of the parameter like the array of string to your language to suit your need.
 
