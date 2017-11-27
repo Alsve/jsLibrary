@@ -11,11 +11,11 @@ The performance observed is around O(n).
 
 #### Example :
 
-..* A float of 1000 would produce string "One thousand"
+  * A float of 1000 would produce string "One thousand"
 
-..* A float of 1234 would produce string "One thousand two hundred thirthy four"
+  * A float of 1234 would produce string "One thousand two hundred thirthy four"
 
-..* Etc, but currently only made in bahasa, you could alter Terbilang.units and other array string to your language
+  * Etc, but currently only made in bahasa, you could alter Terbilang.units and other array string to your language
 
 #### Usage
 Include the javascript file with script tag and insert it wherever you need. The js only need vanila javascript library and only take two global variable name (i.e. _\_Terbilang_ and _Terbilang_).
