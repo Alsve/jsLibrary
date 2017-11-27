@@ -10,8 +10,11 @@ Purpose of this program is to produce human readable string from float.
 The performance observed is around O(n).
 
 #### Example :
+
 ..* A float of 1000 would produce string "One thousand"
+
 ..* A float of 1234 would produce string "One thousand two hundred thirthy four"
+
 ..* Etc, but currently only made in bahasa, you could alter Terbilang.units and other array string to your language
 
 #### Usage
