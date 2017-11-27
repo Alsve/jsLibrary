@@ -26,7 +26,7 @@ Terbilang.format(float) // <fn, string> to produce string with set delimiter:
                         //              Terbilang.delimiter and Terbilang.decimalDelimiter.
 Terbilang.koma(float) // <fn, string> to produce human readable decimal string.
 Terbilang.PRESISI_DESIMAL // <integer> (default to 2) to set Decimal precision.
-Terbilang.Delimiter // <char> with value of '.' or ','
+Terbilang.delimiter // <char> with value of '.' or ','
 Terbilang.decimalDelimiter // <char> with value of '.' or ','
 ```
 [Try it yourself here.](https://jsbin.com/qovava/6/edit?html,output)
