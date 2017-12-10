@@ -54,4 +54,4 @@ Localization could also be done by altering _TicTacToe.infostr_ which now is cur
 
 _TicTacToe.infoid_ should set accordingly to tag which will containt information about event in the game.
 
-[Try it yourself here.](http://jsbin.com/bogakudova/3/edit?html,output)
+[Try it yourself here.](http://jsbin.com/qadetiwazi/1/edit?html,output)
