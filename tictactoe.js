@@ -20,7 +20,8 @@ window.onload = function() {
                          "r e s e t",
                          "Salah jalan!",
                          "telah jalan.",
-                         "MENANG!"];
+                         "MENANG!",
+                         "SERI"];
     
     for (var i = 0; i < 9; i++) {
       TicTacToe.state.push(this.nmark);
@@ -64,6 +65,16 @@ window.onload = function() {
      *  arg[0] = event trigger.
      */
     TicTacToe.takeTurn = function(e) {
+      var cnt = 0;
+      for (var i = 0; i < 9; i++)
+        if (this.state[i] === this.nmark)
+          cnt++;
+      
+      if (cnt == 0) {
+        this.writeInfo(this.infostr[6] + ", "
+                       + this.infostr[1]);
+        return 6;
+      }
       if (this.isWin(this.pmark[0]) 
       === this.pmark[0]
         | this.isWin(this.pmark[1]) 
