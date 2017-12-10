@@ -35,7 +35,7 @@ Terbilang.decimalDelimiter // <char> with value of '.' or ','
 [Try it yourself here.](https://jsbin.com/qovava/6/edit?html,output)
 
 ## tictactoe.js
-This is two players javascript version of TicTacToe game.
+This is a two players javascript version of TicTacToe game.
 
 #### Performance
 The performance observed is O(1)
