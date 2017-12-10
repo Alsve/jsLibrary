@@ -43,7 +43,7 @@ The performance observed is O(1)
 #### Explanation
 Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. [See more](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
-[![TicTacToe Illust](https://en.wikipedia.org/wiki/Tic-tac-toe#/media/File:Tic_tac_toe.svg)]
+![TicTacToe Illust](https://en.wikipedia.org/wiki/Tic-tac-toe#/media/File:Tic_tac_toe.svg)
 
 #### Usage
 Include the javascript file with script tag and insert it wherever you need. The js only need vanilla javascript library and only take one global variable name (i.e _TicTacToe_)
