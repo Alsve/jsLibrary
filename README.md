@@ -38,7 +38,7 @@ Terbilang.decimalDelimiter // <char> with value of '.' or ','
 This is a two players javascript version of TicTacToe game.
 
 #### Performance
-The performance observed is O(1)
+The performance observed is O(1).
 
 #### Explanation
 Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. [See more](https://en.wikipedia.org/wiki/Tic-tac-toe)
@@ -52,6 +52,6 @@ Also the javascript need some tweakings of button id array which will be stored 
 
 Localization could also be done by altering _TicTacToe.infostr_ which now is currently filled with string in bahasa.
 
-_TicTacToe.infoid_ should set accordingly to tag with _id='info'_ which will containt information about event in the game.
+_TicTacToe.infoid_ should set accordingly to tag id which will containt information about event in the game.
 
 [Try it yourself here.](http://jsbin.com/qadetiwazi/1/edit?html,output)
