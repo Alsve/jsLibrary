@@ -1,7 +1,7 @@
 # jsLibrary
 Repository for javascript collection made by Alsve.
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cahyadsn/disc_id/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-BSD-blue.svg)](https://raw.githubusercontent.com/cahyadsn/disc_id/master/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/Alsve/jsLibrary.svg)](https://github.com/Alsve/jsLibrary/network)
 [![GitHub stars](https://img.shields.io/github/stars/Alsve/jsLibrary.svg)](https://github.com/Alsve/jsLibrary/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/Alsve/jsLibrary.svg)](https://github.com/Alsve/jsLibrary/issues)
