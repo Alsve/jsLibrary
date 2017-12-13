@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" 
+        content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    body {
+      background-color : #A3A3A3;
+      padding : 1.15%;
+      margin : 0
+    }
+    
+    #board {
+      z-index : 1;
+      font-family : system-ui;
+      position : absolute;
+      background-color : dodgerblue;
+      width : 93%;
+      height : 87%;
+      padding : 2%;
+      border : dashed;
+      border-color : rgba(255, 255, 255, .85)
+    }
+    
+    #board #title {
+      height : 15%;
+      padding : 1% 0;
+    }
+    
+    #title h1 {
+      margin: 1%;
+      text-align : center;
+      font-size : 2.5em;
+      color : rgba(255, 255, 255, 1);
+      height : 100%;
+    }
+    
+    #board #table {
+      height : 65%;
+      width : 98%;
+      display : table;
+      background-color : rgba(0, 0, 0, 0.94);
+      border : solid;
+      border-color : rgba(255, 255, 255, 0.9);
+      margin-bottom : 1.5%;
+    }
+    
+    .row {
+      display : table-row;
+    }
+    
+    .row .cell{
+      display: table-cell;
+    }
+    
+    .inline {
+      display : inline;
+    }
+    
+    #statusbar {
+      height : 10%;
+      width : 99%;
+      background-color : white;
+      display : table;
+    }
+    
+    #statusbar div {
+      padding : 2%;
+      display : table-cell;
+      vertical-align : middle;
+    }
+    
+    #stb-right {
+      background-color : #DCDCDC;
+      font-size : .9em;
+      text-align : center;
+      width : 25%;
+    }
+    
+    #stb-right:hover {
+      background-color : #CDCDCD;
+    }
+    
+    #stb-right:active {
+      background-color : #BCBCBC;
+    }
+    
+    #boardsdw {
+      position : absolute;
+      margin : -1.15% 0 0 -1.15%;
+      width : 100%;
+      height : 100%;
+      background-color : rgba(0, 0, 0, 0.15);
+    }
+    
+    #info {
+      color : white;
+      font : bold;
+    }
+    
+  </style>
+  <script>
+    window.onload = function () {
+      var SimonGame = {};
+      
+      SimonGame.title = 'Permainan Ingatan';
+      /* 
+       * [['Monza', 'Pomegrenate'],
+       *  ['Royal Blue', 'Picton Blue'],
+       *  ['Gossip', 'Malachite'],
+       *  ['California', 'Ecstasy']] 
+       */
+      SimonGame.colors = [["#CF000F", "#F72A18"],
+                          ["#4183D7", "#5EB0E8"], 
+                          ["#87D37C", "#05EB45"],
+                          ["#F9690E", "#FD990B"]];
+      // Element with board id
+      SimonGame.board = document
+                          .getElementById("board");
+      // Cell element
+      SimonGame.cells = document
+                          .getElementsByClassName("cell");
+      // Element where info is written to
+      SimonGame.infoelem = document
+                          .getElementById("info");
+      /* 
+       * String of info of events in the game
+       * Alter this to your language to suit your need 
+       */
+      SimonGame.infostr = ["INFO : ",
+                           "Permainan Baru",
+                           "Bersiap-siap...",
+                           "Hafalkan urutan berikut!",
+                           "Tebak urutannya!",
+                           "Kamu kalah! Nilai kamu ",
+                           "Kamu benar!",
+                           "Nilai"];
+      
+      // state 1 : ready & 0 : not ready.
+      SimonGame.state = true;
+      SimonGame.pattern = [];
+      SimonGame.guesses = 0;
+      SimonGame.sto = [];
+      
+      SimonGame.ssc = function (n) {
+        document.getElementById("statusbar")
+                .getElementsByTagName("span")[0]
+                .innerHTML = "Score : " + n;
+      }
+      
+      /*
+       * Function to write string to info element id
+       */
+      SimonGame.info = function(str) {
+        SimonGame.infoelem
+                 .innerHTML = this.infostr[0]
+                            + str;
+      }
+      
+      /*
+       * Clear setTimeout buffered at array
+       *     SimonGame.sto
+       */
+      SimonGame.clearSto = function() {
+        console.log(this.sto.length);
+        for(var i = 0; i < this.sto.length; i++)
+          clearTimeout(this.sto[i]);
+        this.sto = [];
+      }
+      
+      /*
+       * Initalize a new game
+       */
+      SimonGame.init = function () {
+        if (this.state) {
+          this.clearSto();
+          this.ssc(0);
+          this.info(this.infostr[1]);
+          this.state = false;
+          this.pattern = [];
+          this.guesses = 0;
+          for (var i = 0; i < this.cells.length; i++) {
+            this.cells[i]
+                .style
+                .backgroundColor = '#000';
+          }
+          
+          setTimeout(()=>{
+            this.info(this.infostr[2]);
+            this.actv(this.state);
+            setTimeout(() => {
+                  SimonGame.state = true;
+                  SimonGame.ask();
+            }, 2000);
+          }, 500);
+        }
+      }
+      
+      /*
+       * Set active status to board button
+       */
+      SimonGame.actv = function (bool) {
+        for (var i = 0; i < this.cells.length; i++)
+          this.cells[i].actv = bool;
+        
+        if (!bool)
+          for (var i = 0; i < SimonGame.cells.length; i++)
+                  SimonGame.cells[i]
+                           .style
+                           .backgroundColor = 
+                              SimonGame.colors[i][0];
+      }
+      
+      /*
+       * Simulate pattern from SimonGame.pattern
+       */
+      SimonGame.ask = function () {
+        this.askc = 0;
+        this.guesses = 0;
+        this.info(this.infostr[3]);
+        this.pattern.push(
+          Math.floor(
+            (Math.random() * 100 / 25) % 4));
+        SimonGame.actv(true);
+        
+        for (var i = 0; i < this.pattern.length; i++) {
+          this.sto.push(setTimeout((j) => {
+            var k = SimonGame.pattern[j];
+            SimonGame.cells[k]
+                     .style
+                     .backgroundColor =
+              SimonGame.colors[k][1];
+            SimonGame.sto.push(setTimeout((l)=>{
+              if (l + 1 === SimonGame.pattern.length) {
+                SimonGame.actv(false);
+                SimonGame.info(SimonGame.infostr[4]);
+              }
+                
+              var m = SimonGame.pattern[l];
+              SimonGame.cells[m]
+                       .style
+                       .backgroundColor = 
+                SimonGame.colors[m][0];
+            }, 750, j));
+          }, i * 1500, i));
+        }
+        
+      }
+      
+      /*
+       *  Function to check user guess
+       */
+      SimonGame.guess = function (n) {
+        if (this.guesses < this.pattern.length)
+          if (n != this.pattern[this.guesses]) {
+            this.guesses = this.pattern.length;
+            this.info(this.infostr[5] + (this.guesses - 1) + ".");
+            this.ssc(this.guesses - 1);
+          } else {
+            if (++this.guesses == this.pattern.length) {
+              this.info(this.infostr[6]);
+              this.ssc(this.guesses);
+              this.sto.push(
+                setTimeout(() => {this.ask();}, 
+                          1500));
+            }
+          }
+        else
+          this.info(this.infostr[5] + (this.guesses - 1) + ".");
+      }
+      
+      /*
+       * Hooking event listener to New Game Button
+       */
+      document.getElementById("stb-right")
+              .addEventListener("click", (e) => {
+        SimonGame.init();
+      });
+      
+      // Register mouseenter & mouseleave for color effects
+      for (var i = 0; i < SimonGame.cells.length; i++) {
+        SimonGame.cells[i].actv = false;
+        SimonGame.cells[i].idx = i;
+        SimonGame.cells[i].addEventListener("mouseenter", 
+                                            (e)=> {
+          if (e.target.style.backgroundColor !== ""
+           && SimonGame.state && !e.target.actv) {
+            e.target.style.backgroundColor =
+              SimonGame.colors[e.target.idx][1];
+          }
+        });
+        SimonGame.cells[i].addEventListener("mouseleave", 
+                                            (e)=> {
+          if (e.target.style.backgroundColor !== ""
+           && SimonGame.state && !e.target.actv) {
+            e.target.style.backgroundColor =
+              SimonGame.colors[e.target.idx][0];
+          }
+        });
+        SimonGame.cells[i].addEventListener("click",
+                                           (e)=> {
+          if (e.target.style.backgroundColor != "" 
+           && SimonGame.state && !e.target.actv) {
+            e.target.actv = true;
+            e.target.style.backgroundColor =
+              SimonGame.colors[e.target.idx][0];
+            setTimeout(()=>{
+              e.target.style.backgroundColor =
+                SimonGame.colors[e.target.idx][1];
+              e.target.actv = false;
+            }, 300);
+            SimonGame.guess(e.target.idx);
+          }
+        });
+      }
+      
+      // Set UI localization
+      SimonGame.board
+               .getElementsByTagName("h1")[0]
+               .innerHTML = SimonGame.title;
+      document.getElementById("stb-right")
+              .innerHTML = SimonGame.infostr[1];
+    }
+  </script>
+</head>
+<body>
+  <div id='board'>
+    <div id='title'>
+      <h1>Simon Game</h1>
+    </div>
+    <div id='table'>
+      <div class='row'>
+        <div class='cell'></div>
+        <div class='cell'></div>
+      </div>
+      <div class='row'>
+        <div class='cell'></div>
+        <div class='cell'></div>
+      </div>
+    </div>
+    <div id='statusbar'>
+        <div>
+          <span>Score : </span>
+        </div>
+        <div id='stb-right'>
+          New Game
+        </div>
+    </div>
+    <p id='info'> INFO : </p>
+  </div>
+  <div id='boardsdw' />
+</body>
+</html>
