@@ -193,7 +193,7 @@
             setTimeout(() => {
                   SimonGame.state = true;
                   SimonGame.ask();
-            }, 2000);
+            }, 2500);
           }, 500);
         }
       }
@@ -205,7 +205,7 @@
         for (var i = 0; i < this.cells.length; i++)
           this.cells[i].actv = bool;
         
-        if (!bool)
+        if (bool)
           for (var i = 0; i < SimonGame.cells.length; i++)
                   SimonGame.cells[i]
                            .style
@@ -217,13 +217,12 @@
        * Simulate pattern from SimonGame.pattern
        */
       SimonGame.ask = function () {
-        this.askc = 0;
         this.guesses = 0;
         this.info(this.infostr[3]);
         this.pattern.push(
           Math.floor(
             (Math.random() * 100 / 25) % 4));
-        SimonGame.actv(true);
+        this.actv(true);
         
         for (var i = 0; i < this.pattern.length; i++) {
           this.sto.push(setTimeout((j) => {
