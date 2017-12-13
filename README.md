@@ -45,7 +45,7 @@ Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-penc
 
 ![TicTacToe Illust](https://upload.wikimedia.org/wikipedia/commons/f/f6/Tic_Tac_Toe.png)
 
-(Illustration cited from : wikipedia.org)
+(Illustration cited of wikipedia.org)
 
 #### Usage
 Include the javascript file with script tag and insert it wherever you need. The js only need vanilla javascript library and only take one global variable name (i.e _TicTacToe_)
@@ -67,7 +67,9 @@ The performance observed is O(1)
 #### Explanation
 Simon is an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison,[1] with software programming by Lenny Cope. The device creates a series of tones and lights and requires a user to repeat the series. If the user succeeds the series becomes progressively longer and more complex. Once the user fails, the game is over. [See more](https://en.wikipedia.org/wiki/Simon_(game))
 
-![Simon Illust](https://en.wikipedia.org/wiki/Simon_(game)#/media/File:OriginalSimon.jpg)
+![Simon Illust](https://upload.wikimedia.org/wikipedia/commons/9/99/OriginalSimon.jpg)
+
+(Illustration doc of wikipedia.org)
 
 #### Usage
 Just download the html to alter it to suit your need or to play it. The snapshot version is also available. _See bottom of this section_
