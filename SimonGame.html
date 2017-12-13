@@ -136,7 +136,7 @@
                            "Tebak urutannya!",
                            "Kamu kalah! Nilai kamu ",
                            "Kamu benar!",
-                           "Nilai"];
+                           "Nilai : "];
       
       // state 1 : ready & 0 : not ready.
       SimonGame.state = true;
@@ -147,7 +147,7 @@
       SimonGame.ssc = function (n) {
         document.getElementById("statusbar")
                 .getElementsByTagName("span")[0]
-                .innerHTML = "Score : " + n;
+                .innerHTML = this.infostr[7] + n;
       }
       
       /*
@@ -322,6 +322,7 @@
                .innerHTML = SimonGame.title;
       document.getElementById("stb-right")
               .innerHTML = SimonGame.infostr[1];
+      SimonGame.ssc(0);
     }
   </script>
 </head>
