@@ -59,13 +59,13 @@ _TicTacToe.infoid_ should set accordingly to tag id which will containt informat
 [Try it yourself here.](http://jsbin.com/qadetiwazi/1/edit?html,output)
 
 ## SimonGame.html
-This is a game where you remember sequence of appeared color in the board.
+This is a game where you remember sequence of appeared color on the board.
 
 #### Performance
 The performance observed is O(1)
 
 #### Explanation
-Simon is an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison,[1] with software programming by Lenny Cope. The device creates a series of tones and lights and requires a user to repeat the series. If the user succeeds the series becomes progressively longer and more complex. Once the user fails, the game is over. [See more](https://en.wikipedia.org/wiki/Simon_(game))
+Simon is an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison, with software programming by Lenny Cope. The device creates a series of tones and lights and requires a user to repeat the series. If the user succeeds the series becomes progressively longer and more complex. Once the user fails, the game is over. [See more](https://en.wikipedia.org/wiki/Simon_(game))
 
 ![Simon Illust](https://upload.wikimedia.org/wikipedia/commons/9/99/OriginalSimon.jpg)
 
