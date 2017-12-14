@@ -74,4 +74,4 @@ Simon is an electronic game of memory skill invented by Ralph H. Baer and Howard
 #### Usage
 Just download the html to alter it to suit your need or to play it. The snapshot version is also available. _See bottom of this section_
 
-[Try it yourself here.](http://jsbin.com/rudewa/6/edit?html,output)
+[Try it yourself here.](http://jsbin.com/rudewa/10/edit?html,output)
