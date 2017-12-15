@@ -1,5 +1,5 @@
 // Author        : Alrayan
-// Creation date : Nov 27 17,  04:36
+// Creation date : Dec 9 17,  09:36
 // License       : BSD License v3
 // Repositories  : https://github.com/Alsve/jsLibrary/
 
