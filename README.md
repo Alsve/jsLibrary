@@ -32,7 +32,7 @@ Terbilang.PRESISI_DESIMAL // <integer> (default to 2) to set Decimal precision.
 Terbilang.delimiter // <char> with value of '.' or ','
 Terbilang.decimalDelimiter // <char> with value of '.' or ','
 ```
-[Try it yourself here.](https://jsbin.com/kudifum/4/edit?html,js,output)
+[Try it yourself here.](https://jsbin.com/kudifum/5/edit?html,js,output)
 
 ## tictactoe.js
 This is a two players javascript version of TicTacToe game.
