@@ -69,7 +69,7 @@ Terbilang.delim
  */
 Terbilang.decDelim
 ```
-[Try it yourself here.](https://jsbin.com/kudifum/5/edit?html,js,output)
+[Try it yourself here.](https://jsbin.com/kudifum/7/edit?html,js,output)
 
 ## tictactoe.js
 This is a two players javascript version of TicTacToe game.
