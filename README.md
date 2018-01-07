@@ -21,16 +21,53 @@ The performance observed is around O(n).
   * Etc, but currently only made in bahasa, you could alter Terbilang.units and other array string to your language
 
 #### Usage
-Include the javascript file with script tag and insert it wherever you need. The js only need vanilla javascript library and only take two global variable name (i.e. _\_Terbilang_ and _Terbilang_).
+Include the javascript file with script tag and insert it wherever you need. The js only need vanilla javascript library and only take one global variable name (i.e. _Terbilang_).
 
 ```javascript 
-Terbilang.apa(float) // <fn, string> to produce full string
-Terbilang.format(float) // <fn, string> to produce string with set delimiter:
-                        //              Terbilang.delimiter and Terbilang.decimalDelimiter.
-Terbilang.koma(float) // <fn, string> to produce human readable decimal string.
-Terbilang.PRESISI_DESIMAL // <integer> (default to 2) to set Decimal precision.
-Terbilang.delimiter // <char> with value of '.' or ','
-Terbilang.decimalDelimiter // <char> with value of '.' or ','
+/* 
+ * <fn, string> to produce full string
+ */
+Terbilang.what(float)    
+
+/* 
+ *  <fn, Promise> asynchronous call
+ *  callback param : @Terbilang object function
+ *  Object properties : ob.out and other function.
+ *  Usage example : 
+ *
+ *  Terbilang.async("1000", function(ob) {
+ *      document.getElementById("output").innerHTML = ob.out;
+ *  })
+ *
+ *  ob.out would have same result as Terbilang.what("1000"), but It has async behaviour.
+ */
+Terbilang.async(string, callback)
+
+/* 
+ * <fn, string> to produce string with set delimiter:
+ * Terbilang.delim and Terbilang.decDelim.
+ */
+Terbilang.format(float)
+
+/*
+ * <fn, string> to produce human readable decimal string.
+ */
+Terbilang.decimal(float)
+
+/*
+ * <integer> (default to 2) to set Decimal precision.
+ */
+Terbilang.PRECISION
+
+/*
+ * <char> with value of '.' or ','
+ */
+Terbilang.delim
+
+/*
+ * <char> with value of '.' or ','
+ */
+Terbilang.decDelim
 ```
 [Try it yourself here.](https://jsbin.com/kudifum/5/edit?html,js,output)
 
