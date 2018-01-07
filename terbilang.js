@@ -81,7 +81,7 @@ Terbilang.rectify = function(input) {
  */
 Terbilang.what = function(input) {
     var inp = input.split(".");
-    inp[0] = inp[0] == 0 ? "nol" : 
+    inp[0] = inp[0] == 0 ? Terbilang.null : 
              Terbilang.prototype
               .core.thousandSplit.apply(null, [input.split(".")[0]])
               .map(x => Terbilang.thousand(x))
@@ -207,7 +207,7 @@ Terbilang.prototype.format = function() {
  * @return : <String> Word of number from this.in
  */
 Terbilang.prototype.what = function() {
-    this.out = this.in.split(".")[0] == 0 ? "nol" : this.core(this.in.split(".")[0]);
+    this.out = this.in.split(".")[0] == 0 ? Terbilang.null : this.core(this.in.split(".")[0]);
     this.out += " " + this.decimal(this.in.split(".")[1]);
   
     return (this.out = this.rectify(
